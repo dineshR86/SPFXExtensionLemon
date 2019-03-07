@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "spo-extension-share-icon-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/spoExtensionShareIcon/SpoExtensionShareIconApplicationCustomizer.js",
+          "manifest": "./src/extensions/spoExtensionShareIcon/SpoExtensionShareIconApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpoExtensionShareIconApplicationCustomizerStrings": "lib/extensions/spoExtensionShareIcon/loc/{locale}.js"
+  }
+}
