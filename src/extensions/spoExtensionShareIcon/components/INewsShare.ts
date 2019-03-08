@@ -5,5 +5,5 @@ export interface INewsShareProps{
 }
 
 export interface INewsShareState{
-    iconMessage:string;
+    show:boolean;
 }

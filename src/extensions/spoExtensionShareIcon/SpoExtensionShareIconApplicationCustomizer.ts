@@ -34,9 +34,10 @@ export default class SpoExtensionShareIconApplicationCustomizer
   @override
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
-
+    
   this.context.placeholderProvider.changedEvent.add(this,this._renderPlaceHolders);
   //this._renderPlaceHolders();
+
 
     return Promise.resolve();
   }
@@ -51,13 +52,12 @@ export default class SpoExtensionShareIconApplicationCustomizer
       console.log("the top placeholder was not found");
     }
 
-    if(this._topPlaceholder.domElement){
+    let divelement:HTMLDivElement=document.createElement("div");
+    divelement.className="SPFXExtension";
+    document.getElementsByClassName("ms-CommandBar-primaryCommand")[0].appendChild(divelement);
+    if(divelement){
       const element:React.ReactElement<INewsShareProps>=React.createElement(NewsShare);
-
-      ReactDom.render(element,this._topPlaceholder.domElement);
-      // this._topPlaceholder.domElement.innerHTML=`
-      // <div><p>This is a test</p></div>
-      // `
+      ReactDom.render(element,divelement);
     }
 
   }
