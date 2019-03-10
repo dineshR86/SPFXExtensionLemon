@@ -33,9 +33,10 @@ export default class SpoExtensionShareIconApplicationCustomizer
 
   @override
   public onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
-    
+    debugger;
+    console.log("log_1");
   this.context.placeholderProvider.changedEvent.add(this,this._renderPlaceHolders);
+  console.log("log_2");
   //this._renderPlaceHolders();
 
 
@@ -43,6 +44,7 @@ export default class SpoExtensionShareIconApplicationCustomizer
   }
 
   private _renderPlaceHolders():void{
+    debugger;
     console.log('HelloWorldApplicationCustomizer._renderPlaceHolders()');
     console.log('Available placeholders: ',this.context.placeholderProvider.placeholderNames.map(name => PlaceholderName[name]).join(', '));
     if(!this._topPlaceholder){
@@ -56,7 +58,12 @@ export default class SpoExtensionShareIconApplicationCustomizer
     divelement.className="SPFXExtension";
     document.getElementsByClassName("ms-CommandBar-primaryCommand")[0].appendChild(divelement);
     if(divelement){
-      const element:React.ReactElement<INewsShareProps>=React.createElement(NewsShare);
+      const element:React.ReactElement<INewsShareProps>=React.createElement(
+        NewsShare,{
+          newscontext:this.context,
+          pageurl:window.location.href.split('?')[0]
+        }
+        );
       ReactDom.render(element,divelement);
     }
 

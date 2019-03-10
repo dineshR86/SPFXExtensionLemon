@@ -17,10 +17,10 @@
     "@microsoft/sp-dialog": "1.7.1",
     "@types/es6-promise": "0.0.33",
     "@types/webpack-env": "1.13.1",
-    "bootstrap": "^4.3.1",
+    "office-ui-fabric-react": "^5.64.0",
     "react": "15.6.2",
-    "react-bootstrap": "^1.0.0-beta.5",
-    "react-dom": "15.6.2"
+    "react-dom": "15.6.2",
+    "typescript": "^2.8.4"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.7.1",

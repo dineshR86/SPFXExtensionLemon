@@ -2,8 +2,10 @@ import ApplicationCustomizerContext from "@microsoft/sp-application-base/lib/ext
 
 export interface INewsShareProps{
     newscontext:any;
+    pageurl:string;
 }
 
 export interface INewsShareState{
     show:boolean;
+    postcontent:string;
 }

@@ -1,54 +1,71 @@
 import * as React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import { INewsShareState, INewsShareProps } from './INewsShare';
-import { override } from '@microsoft/decorators';
+import {
+    PrimaryButton,
+    DialogFooter,
+    Dialog, DialogType, DefaultButton
+} from 'office-ui-fabric-react';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import {TextField} from 'office-ui-fabric-react/lib/TextField';
 const logo = require('../../../../images/logo.png');
 
 export default class NewsShare extends React.Component<INewsShareProps, INewsShareState> {
 
-    constructor(props: any) {
+    private _labelId: string = getId('dialogLabel');
+    private _subTextId: string = getId('subTextLabel');
+    constructor(props: INewsShareProps) {
         super(props);
         this.state = {
-            show:false
+            show: true,
+            postcontent:"this is a news post "+ this.props.pageurl
         };
     }
 
-    @override
-    private handleClose() {
-        this.setState({ show: false });
-      }
-    
-    @override
-    private handleShow() {
-        this.setState({ show: true });
-      }
-
     public render(): any {
-        //debugger;
+        debugger;
         return (
             <div>
                 <div>
-                    <button>
+                    <DefaultButton onClick={this._showDialog}>
                         <img src={String(logo)} style={{ width: 16, height: 16 }} />
                         <span>Workplace</span>
-                    </button>
+                    </DefaultButton>
                 </div>
-                <Modal show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={this.handleClose}>
-                            Save Changes
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
+                <Dialog
+                    hidden={this.state.show}
+                    onDismiss={this._closeDialog}
+                    dialogContentProps={{
+                        type: DialogType.largeHeader,
+                        title: 'Post to Workplace',
+                        subText: 'For sharing the news article to the Facebook workplace'
+                    }}
+                    modalProps={{
+                        titleAriaId: this._labelId,
+                        subtitleAriaId: this._subTextId,
+                        isBlocking: false,
+                        containerClassName: 'ms-dialogMainOverride'
+                    }}
+                >
+                <TextField label="Content" multiline rows={5} value={this.state.postcontent} disabled={true}/>
+                    <DialogFooter>
+                        <PrimaryButton onClick={this._saveDialog} text="Post" />
+                        <DefaultButton onClick={this._closeDialog} text="Cancel" />
+                    </DialogFooter>
+                </Dialog>
             </div>
         );
+    }
+
+    private _showDialog = (): void => {
+        this.setState({ show: false });
+    }
+
+    private _closeDialog = (): void => {
+        this.setState({ show: true });
+    }
+
+    private _saveDialog=():void =>{
+        console.log(this.state.postcontent);
+        this.setState({show:true});
     }
 }
