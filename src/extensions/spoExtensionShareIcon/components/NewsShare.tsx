@@ -7,6 +7,7 @@ import {
 } from 'office-ui-fabric-react';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import {TextField} from 'office-ui-fabric-react/lib/TextField';
+import style from './newsshare.module.scss';
 const logo = require('../../../../images/logo.png');
 
 export default class NewsShare extends React.Component<INewsShareProps, INewsShareState> {
@@ -22,9 +23,9 @@ export default class NewsShare extends React.Component<INewsShareProps, INewsSha
     }
 
     public render(): any {
-        debugger;
+        //debugger;
         return (
-            <div>
+            <div className={style.newsshareextn}>
                 <div>
                     <DefaultButton onClick={this._showDialog}>
                         <img src={String(logo)} style={{ width: 16, height: 16 }} />

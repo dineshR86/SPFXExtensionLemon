@@ -1,0 +1,28 @@
+.newsshareextn{
+    height:100%;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+
+    button{
+        height: 100%;
+        padding: 0 4px;
+    }
+
+    img{
+        margin: 0 4px;
+    }
+
+    span{
+        line-height: 100%;
+        font-weight: normal;
+        white-space: nowrap;
+        margin: 0 4px;
+    }
+
+    .ms-Dialog-title{
+        color: #ffffff;
+    }
+}
+

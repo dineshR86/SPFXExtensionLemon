@@ -33,7 +33,7 @@ export default class SpoExtensionShareIconApplicationCustomizer
 
   @override
   public onInit(): Promise<void> {
-    debugger;
+    //debugger;
     console.log("log_1");
   this.context.placeholderProvider.changedEvent.add(this,this._renderPlaceHolders);
   console.log("log_2");
@@ -44,7 +44,7 @@ export default class SpoExtensionShareIconApplicationCustomizer
   }
 
   private _renderPlaceHolders():void{
-    debugger;
+    //debugger;
     console.log('HelloWorldApplicationCustomizer._renderPlaceHolders()');
     console.log('Available placeholders: ',this.context.placeholderProvider.placeholderNames.map(name => PlaceholderName[name]).join(', '));
     if(!this._topPlaceholder){
